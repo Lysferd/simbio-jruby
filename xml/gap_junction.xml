@@ -1,0 +1,80 @@
+<gapjunction name="gap junction #number-#next" initial_value="0.0" units="pA" className="org.simBio.bio.oka_et_al_2006.structure.GapJunctionK">
+	<link name="Vm1" initial_value="../cell #number/Vm" units="mV" />
+	<link name="Cm1" initial_value="../cell #number/membrane capacitance" units="pF" />
+	<link name="Ki1" initial_value="../cell #number/K" units="mM" />
+	<link name="volume1" initial_value="../cell #number/volume" units="" />
+	<link name="Vm2" initial_value="../cell #next/Vm" units="mV" />
+	<link name="Cm2" initial_value="../cell #next/membrane capacitance" units="pF" />
+	<link name="Ki2" initial_value="../cell #next/K" units="mM" />
+	<link name="volume2" initial_value="../cell #next/volume" units="" />
+	<link name="F" initial_value="/Faraday constant" />
+	<parameter name="z" initial_value="1" />
+	<junctionalconductance name="conductance" initial_value="0.0" units="nS" className="org.simBio.bio.oka_et_al_2006.function.JunctionalConductance">
+		<parameter name="number" initial_value="30E+3" units="dimension_less"/>
+		
+		<voldependency name="gj" inital_value="0.0" className="org.simBio.bio.henriquez_et_al_2001.GapJunction">
+			<voltage name="Vj" initial_value="0.0" units="mV" className="org.simBio.bio.oka_et_al_2006.function.JunctionalPotential">
+				<link name="Vm1" initial_value="../../../../cell #number/Vm" units="mV"/>
+				<link name="Vm2" initial_value="../../../../cell #next/Vm" units="mV"/>
+			</voltage>
+			<variable name="nHH" initial_value="1.0"/>
+			<variable name="nLH" initial_value="0.0"/>
+			<variable name="nHL" initial_value="0.0"/>
+			<variable name="nLL" initial_value="0.0"/>
+			<parameter name="gHH" initial_value="0.0"/>
+			<parameter name="gLH" initial_value="0.0"/>
+			<parameter name="gHL" initial_value="0.0"/>
+			<parameter name="gLL" initial_value="0.0"/>
+			<parameter name="VH" initial_value="145.9" units="mV"/>
+			<parameter name="VL" initial_value="299.0" units="mV"/>
+			<parameter name="GH" initial_value="146.6" units="pS"/>
+			<parameter name="GL" initial_value="13.1" units="pS"/>
+			<parameter name="Acoef" initial_value="181.5E-3" units="ms-1"/>
+			<parameter name="Bcoef" initial_value="0.007E-3" units="ms-1"/>
+			<parameter name="Va" initial_value="8.437" units="mV"/>
+			<parameter name="Vb" initial_value="8.675" units="mV"/>
+			<parameter name="VHL" initial_value="0.0" units="mV"/>
+			<parameter name="VLH" initial_value="0.0" units="mV"/>
+		</voldependency>
+		<independentGate name="pOpen" initial_value="1.0" className="org.simBio.bio.oka_et_al_2006.function.kinetics.IndependentGate">
+			<FiveStateModel name="gate_cx1" initial_value="1.0" className="org.simBio.bio.oka_et_al_2006.function.kinetics.MultiStateModel">
+				<variable name="open" initial_value="0.313" units="dimension_less"/>
+				<variable name="intermediate 1" initial_value="0.44" units="dimension_less"/>
+				<variable name="intermediate 2" initial_value="0.031" units="dimension_less"/>
+				<variable name="intermediate 3" initial_value="0.032" units="dimension_less"/>
+				<variable name="close" initial_value="0.184" units="dimension_less"/>
+				<link name="ligand" initial_value="../../../../cell #number/Ca" units="mM"/>
+				<parameter name="a" initial_value="1.81E+2" units="ms-1 mM-1"/>
+				<parameter name="b" initial_value="5.43E-4" units="ms-1"/>
+				<parameter name="a_scale 1" initial_value="0.0113"/>
+				<parameter name="a_scale 2" initial_value="0.00102"/>
+				<parameter name="a_scale 3" initial_value="0.093"/>
+				<parameter name="a_scale 4" initial_value="1"/>
+				<parameter name="b_scale 1" initial_value="1"/>
+				<parameter name="b_scale 2" initial_value="2"/>
+				<parameter name="b_scale 3" initial_value="3"/>
+				<parameter name="b_scale 4" initial_value="4"/>
+				<parameter name="step" initial_value="4" units="dimension_less"/>
+			</FiveStateModel>
+			<FiveStateModel name="gate_cx2" initial_value="1.0" className="org.simBio.bio.oka_et_al_2006.function.kinetics.MultiStateModel">
+				<variable name="open" initial_value="0.313" units="dimension_less"/>
+				<variable name="intermediate 1" initial_value="0.44" units="dimension_less"/>
+				<variable name="intermediate 2" initial_value="0.031" units="dimension_less"/>
+				<variable name="intermediate 3" initial_value="0.032" units="dimension_less"/>
+				<variable name="close" initial_value="0.184" units="dimension_less"/>
+				<link name="ligand" initial_value="../../../../cell #next/Ca" units="mM"/>
+				<parameter name="a" initial_value="1.81E+2" units="ms-1 mM-1"/>
+				<parameter name="b" initial_value="5.43E-4" units="ms-1"/>
+				<parameter name="a_scale 1" initial_value="0.0113"/>
+				<parameter name="a_scale 2" initial_value="0.00102"/>
+				<parameter name="a_scale 3" initial_value="0.093"/>
+				<parameter name="a_scale 4" initial_value="1"/>
+				<parameter name="b_scale 1" initial_value="1"/>
+				<parameter name="b_scale 2" initial_value="2"/>
+				<parameter name="b_scale 3" initial_value="3"/>
+				<parameter name="b_scale 4" initial_value="4"/>
+				<parameter name="step" initial_value="4" units="dimension_less"/>
+			</FiveStateModel>
+		</independentGate>
+	</junctionalconductance>
+</gapjunction>

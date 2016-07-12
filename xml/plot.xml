@@ -1,0 +1,146 @@
+<!DOCTYPE page>
+<page name="page" className="org.simBio.sim.analyzer.graph.Viewer">
+  <parameter name="min" initial_value="0.0"/>
+  <parameter name="max" initial_value="400"/>
+  <parameter name="interval" initial_value="0.0"/>
+  <parameter name="referenceWidth" initial_value="29700.0"/>
+  <parameter name="referenceHeight" initial_value="21000.0"/>
+  <parameter name="titleSize" initial_value="12.0" units="pt"/>
+  <parameter name="legendSize" initial_value="10.0" units="pt"/>
+  <parameter name="axisSize" initial_value="12.0" units="pt"/>
+  <parameter name="labelSize" initial_value="10.0" units="pt"/>
+
+  <graph name="Vm" className="org.simBio.sim.analyzer.graph.Graph">
+    <link name="target 1" initial_value="external/cell/Vm"/>
+    <link name="interval" initial_value="../interval"/>
+    <axisY name="Vm" units="mV" className="org.simBio.sim.analyzer.graph.AxisY">
+      <parameter name="origin" initial_value="500.0"/>
+      <parameter name="length" initial_value="3750.0"/>
+      <parameter name="min" initial_value="-100.0"/>
+      <parameter name="max" initial_value="60.0"/>
+    </axisY>
+    <axisX name="Time" units="ms" className="org.simBio.sim.analyzer.graph.AxisX">
+      <link name="min" initial_value="../../min"/>
+      <link name="max" initial_value="../../max"/>
+      <parameter name="origin" initial_value="2000.0"/>
+      <parameter name="length" initial_value="12000.0"/>
+      <component name="does plot label" initial_value="false"/>
+    </axisX>
+  </graph>
+
+  <graph name="Current">
+    <link name="target 1" initial_value="external/cell/ICaL" />
+    <link name="target 2" initial_value="external/cell/ICaT" />
+    <link name="target 3" initial_value="external/cell/IKs" />
+    <link name="target 4" initial_value="external/cell/IKr" />
+    <link name="target 5" initial_value="external/cell/INaK" />
+    <link name="target 6" initial_value="external/cell/INaCa" />
+    <link name="interval" initial_value="../interval"/>
+    <axisY name="current" units="pA">
+      <parameter name="origin" initial_value="5750.0"/>
+      <parameter name="length" initial_value="3750.0"/>
+      <parameter name="min" initial_value="-200.0"/>
+      <parameter name="max" initial_value="200.0"/>
+    </axisY>
+    <axisX name="Time" units="ms">
+      <link name="min" initial_value="../../min"/>
+      <link name="max" initial_value="../../max"/>
+      <parameter name="origin" initial_value="2000.0"/>
+      <parameter name="length" initial_value="12000.0"/>
+    </axisX>
+  </graph>
+
+  <graph name="Contraction">
+    <link name="target 1" initial_value="external/cell/crossBridge/halfsarcomerelength"/>
+    <link name="interval" initial_value="../interval"/>
+    <axisY name="half sarcomere length" units="um">
+      <parameter name="origin" initial_value="500.0"/>
+      <parameter name="length" initial_value="3750.0"/>
+      <parameter name="min" initial_value="0.8"/>
+      <parameter name="max" initial_value="1.02"/>
+      <component name="pattern" initial_value="0.0#"/>
+    </axisY>
+    <axisX name="Time" units="ms">
+      <link name="min" initial_value="../../min"/>
+      <link name="max" initial_value="../../max"/>
+      <parameter name="origin" initial_value="17000.0"/>
+      <parameter name="length" initial_value="12000.0"/>
+      <component name="does plot label" initial_value="false"/>
+    </axisX>
+  </graph>
+
+  <graph name="Ca Concentration">
+    <link name="target 1" initial_value="external/cell/Ca"/>
+    <component name="target 1 prefix" initial_value="1"/>
+    <parameter name="target 1 scale" initial_value="1000.0"/>
+    <link name="target 2" initial_value="external/cell/SRup/Ca"/>
+    <component name="target 2 prefix" initial_value="1"/>
+    <link name="target 3" initial_value="external/cell/SRrel/Ca"/>
+    <component name="target 3 prefix" initial_value="1"/>
+    <link name="interval" initial_value="../interval"/>
+    <axisY name="concentration" units="mM">
+      <parameter name="origin" initial_value="5750.0"/>
+      <parameter name="length" initial_value="3750.0"/>
+      <parameter name="min" initial_value="0.0"/>
+      <parameter name="max" initial_value="6.0"/>
+    </axisY>
+    <axisX name="Time" units="ms">
+      <link name="min" initial_value="../../min"/>
+      <link name="max" initial_value="../../max"/>
+      <parameter name="origin" initial_value="17000.0"/>
+      <parameter name="length" initial_value="12000.0"/>
+    </axisX>
+  </graph>
+
+  <graph name="State Probability" initial_value="0.0" className="org.simBio.sim.analyzer.graph.Graph">
+    <link name="target 1" initial_value="external/voldependency/nHH" />
+    <link name="target 2" initial_value="external/voldependency/nLH" />
+    <link name="target 3" initial_value="external/voldependency/nHL" />
+    <link name="target 4" initial_value="external/voldependency/nLL" />
+    <link name="interval" initial_value="../interval" />
+    <axisY name="Probability" units="adimensional">
+      <parameter name="origin" initial_value="11500.0" />
+      <parameter name="length" initial_value="3750.0" />
+      <parameter name="min" initial_value="0.0" />
+      <parameter name="max" initial_value="1.0" />
+      <parameter name="gridStep" initial_value="0.2" />
+      <parameter name="labelStep" initial_value="0.2" />
+    </axisY>
+    <axisX name="time" units="ms">
+      <link name="min" initial_value="../../min" />
+      <link name="max" initial_value="../../max" />
+      <link name="elapsedTime" initial_value="/elapsedTime" />
+      <parameter name="origin" initial_value="2000.0" />
+      <parameter name="length" initial_value="12000.0" />
+      <component name="does plot label" initial_value="false" />
+      <parameter name="labelStep" initial_value="6000.0" />
+    </axisX>
+  </graph>
+
+  <graph name="conductance" initial_value="0.0">
+    <link name="target 1" initial_value="external/voldependency/gHH" />
+    <link name="target 2" initial_value="external/voldependency/gLH" />
+    <link name="target 3" initial_value="external/voldependency/gHL" />
+    <link name="target 4" initial_value="external/voldependency/gLL" />
+    <link name="interval" initial_value="../interval" />
+    <axisY name="conductance" initial_value="0.0">
+      <parameter name="origin" initial_value="11500.0" />
+      <parameter name="length" initial_value="3750.0" />
+      <parameter name="min" initial_value="0.0" />
+      <parameter name="max" initial_value="100.0" />
+      <parameter name="gridStep" initial_value="10.0" />
+      <parameter name="labelStep" initial_value="10.0" />
+      <component name="units" initial_value="conductance (pS)" />
+    </axisY>
+    <axisX name="time" initial_value="0.0">
+      <link name="min" initial_value="../../min" />
+      <link name="max" initial_value="../../max" />
+      <link name="elapsedTime" initial_value="/elapsedTime" />
+      <parameter name="origin" initial_value="17000.0" />
+      <parameter name="length" initial_value="12000.0" />
+      <component name="does plot label" initial_value="true" />
+      <parameter name="labelStep" initial_value="6000.0" />
+      <component name="units" initial_value="s" />
+    </axisX>
+  </graph>
+</page>

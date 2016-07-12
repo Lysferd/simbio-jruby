@@ -1,0 +1,30 @@
+<?sim.xml version="1.0"?>
+<!--
+	Ventricular cell model proposed by Matsuoka et al, 2004.
+	The differential equations are solved by the Runge-Kutta.
+	
+	It's available className="org.simBio.core.integrator.RungeKutta" as "variable".
+	It's available className="org.simBio.bio.matsuoka_et_al_2003.molecule.buffer.Ca.Analytic_RK" as Ca buffer.
+	Ca = free Ca, parameter
+	CaTotal = total Ca, variable
+	It's available className="org.simBio.bio.matsuoka_et_al_2003.molecule.buffer.Ca.TroponinNL_RK" as troponin.
+	
+	Mitochondria model in Korzeniewski & Zoldz 2001 was incorporated to cardiac model in Matsuoka et al 2003.
+	
+	Satoshi MATSUOKA, Nobuaki SARAI, Hikari JO, Akinori NOMA
+	Simulation of ATP metabolism in cardiac excitation-contraction coupling
+	Progress in Biophysics & Molecular Biology, 85, 279-299, 2004
+	-->
+<conductor name="model" initial_value="0.0">
+
+    <parameter name="duration" initial_value="400.0" units="msec" />
+    <parameter name="dtMin" initial_value="0.01" units="msec" />
+    <parameter name="dtMax" initial_value="0.02" units="msec" />
+    <parameter name="adjustDyOverY" initial_value="0.01" units="dimension_less" />
+    <parameter name="elapsedTime" initial_value="0.0" units="ms" />
+    <parameter name="timeStep" initial_value="0.1" units="ms" />
+    <parameter name="Gas constant" initial_value="8.3143" />
+    <parameter name="absolute temperature" initial_value="310.0" units="K" />
+    <parameter name="Faraday constant" initial_value="96.4867" units="Coulomb/mM" />
+    
+    <variable name="dummy" initial_value="6.559874742298188E-6" />

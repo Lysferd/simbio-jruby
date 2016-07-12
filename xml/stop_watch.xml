@@ -1,0 +1,5 @@
+<stopWatch name="stop watch" initial_value="2.3090536111109228" units="real/virtual" className="org.simBio.sim.analyzer.StopWatch">
+  <parameter name="totalTime" initial_value="8312593.0" units="msec" />
+  <parameter name="lapTime" initial_value="0.5702142870470166" units="msec/calc" />
+  <link name="elapsedTime" initial_value="/elapsedTime" />
+</stopWatch>

@@ -1,0 +1,8 @@
+<compartment name="external" initial_value="0.0" className="org.simBio.bio.matsuoka_et_al_2003.Compartment">
+    <parameter name="volume" initial_value="800.0E+3" units="um^3" />
+    <variable name="Na" initial_value="140.0" units="mM" className="org.simBio.core.integrator.RungeKutta" />
+    <variable name="K" initial_value="5.4" units="mM" />
+    <variable name="Ca" initial_value="1.8" units="mM" />
+    <parameter name="FCCP" initial_value="0.0" units="mM" />
+    <parameter name="CN" initial_value="0.0" units="mM" />
+    <parameter name="Oxygen" initial_value="0.24" units="mM" />

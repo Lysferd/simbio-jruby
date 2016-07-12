@@ -1,0 +1,9 @@
+<currentClamp name="current clamp" initial_value="0.0" className="org.simBio.bio.matsuoka_et_al_2003.current.pipette.CurrentClamp">
+  <link name="elapsedTime" initial_value="/elapsedTime" />
+  <link name="current" initial_value="../cell #first/current" />
+  <link name="currentK" initial_value="../cell #first/currentK" />
+  <parameter name="interval" initial_value="400.0" units="msec" />
+  <parameter name="onset" initial_value="50.0" units="msec" />
+  <parameter name="offset" initial_value="52.0" units="msec" />
+  <parameter name="amplitude" initial_value="#input" units="pA" />
+</currentClamp>
