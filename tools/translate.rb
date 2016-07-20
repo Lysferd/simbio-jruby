@@ -23,8 +23,8 @@
 # along with SimBio-JRuby.  If not, see <http://www.gnu.org/licenses/>.
 #==============================================================================
 
-INPUT = 'cubix/1.8/5x5x5-cell/-250000.0/cell_force.csv'
-OUTPUT = 'sim/force%03i.csv'
+INPUT = 'out/cubix/1.8/5x5x5-cell/-250000.0/cell_volt.csv'
+OUTPUT = 'out/sim/voltage%03i.csv'
 
 begin
   data = File::new INPUT, ?r
@@ -33,21 +33,21 @@ begin
     time, *voltages = line.split(?,).map(&:to_f)
     
     File::open( OUTPUT % (time + 1), ?w ) do | file |
-      file << "X-Axis,Y-Axis,Z-Axis,Force\n"
+      file << "X-Axis,Y-Axis,Z-Axis,Voltage\n"
       
       # output order is k -> j -> i
       # depth, then column, then row
       for i in 0...5
         for j in 0...5
           for k in 0...5
-            file << "%i,%i,%i,%f\n" % [   i,   j,   k, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [   i,   j, k+1, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [   i, j+1,   k, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [   i, j+1, k+1, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [ i+1,   i,   k, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [ i+1,   i, k+1, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [ i+1, j+1,   k, voltages[+i] ]
-            file << "%i,%i,%i,%f\n" % [ i+1, j+1, k+1, voltages[+i] ]
+            file << "%i,%i,%i,%f\n" % [   i,   j,   k, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [   i,   j, k+1, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [   i, j+1,   k, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [   i, j+1, k+1, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [ i+1,   j,   k, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [ i+1,   j, k+1, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [ i+1, j+1,   k, voltages[i] ]
+            file << "%i,%i,%i,%f\n" % [ i+1, j+1, k+1, voltages[i] ]
           end
         end
       end
