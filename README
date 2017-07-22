@@ -1,0 +1,58 @@
+﻿==============================================
+ Simbio JRuby
+==============================================
+
+----------------------------------------------
+  About
+
+ `simbio-jruby' is a JRuby-based application that works as front-end for the SimBio library.
+ All calculated data is output as CSV files, easily accessible with most modern spreadsheet programs.
+
+----------------------------------------------
+  Requirements
+
+In order to run this application, the following environment is required:
+ * Linux Ubuntu 14.04 and superior
+ * Oracle Java SE Development Kit 8u101
+ * JRuby 9.1.2.0
+ * RVM (latest stable version)
+
+----------------------------------------------
+  How to Install
+
+Installation follows the procedure below:
+ 1) Install of Oracle Java on the Ubuntu OS
+
+ 2) Install RVM:
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+$ \curl -sSL https://get.rvm.io | bash -s stable
+
+ 3) Install JRuby:
+$ rvm install jruby
+
+----------------------------------------------
+  How to Run
+
+ Once everything is installed, move to the `simbio-jruby' folder:
+$ cd /path/to/simbio-jruby/
+
+ In order to run a single calculation, use `main.rb'
+$ tools/main.rb ARGS
+ In which ARGS can be:
+ * --verbose or -v: application runs in verbose mode
+ * --step or -s: application forces the calculation loop to pause at each interaction
+ * --count or -c: sets the grid of cells, e.g. 5x5x5 starts the simulation for a cube of 5x5x5 cells
+ * --input or -i: sets the stumulus current magnitude, always in pA, defaults to -5,000pA
+ * --out or -o: sets the output folder for the data, e.g. -oDATA will output in folder `DATA'
+ * --model or -m: sets the input model file, used only when not auto-generating the model
+
+ Example:
+$ tools/main.rb -v -c100x20 -i10e3 -oMyData
+ Will run verbose-ly the simulation of a 2D matrix of 100x20 cells with input current of -10,000pA and will output data in MyData folder in the following pattern:
+ `./MyData/100x20-cell/-10000.0/' <- all calculated data will be output as CSV files in this subdirectory.
+
+ In order to run multiple calculations (not simultaneously):
+$ tools/run_cablix.rb	<- for 1D
+$ tools/run_matrix.rb	<- for 2D
+$ tools/run_cubix.rb	<- for 3D
+ Each file can be modified to perform the simulations needed by the user.
